@@ -7,6 +7,7 @@
   <style>
     :root {
       background-color: white;
+      font-family: system-ui;
     }
     #codebox {
       display: block;
@@ -15,6 +16,9 @@
       height: 18rem;
       resize: vertical;
     }
+    #run {
+      font: 14px system-ui;
+    }
     #output {
       display: block;
       padding: 0.5rem;
@@ -22,6 +26,9 @@
       white-space: pre-wrap;
       overflow: auto;
       word-break: break-all;
+    }
+    #codebox, #output {
+      font: 14px / 1.375 "Consolas", ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Mono", "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
     }
 
     @media only screen and (prefers-color-scheme: dark) {
