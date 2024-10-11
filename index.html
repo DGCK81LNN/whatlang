@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+  <title>WhatLang interpreter</title>
+  <style>
+    :root {
+      background-color: white;
+    }
+    #codebox {
+      display: block;
+      box-sizing: border-box;
+      width: 100%;
+      height: 18rem;
+    }
+    #output {
+      display: block;
+      padding: 0.5rem;
+      background-color: lightgray;
+      white-space: pre-wrap;
+      overflow: auto;
+      word-break: break-all;
+    }
+
+    @media only screen and (prefers-color-scheme: dark) {
+      :root {
+        filter: invert(1) hue-rotate(180deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <textarea id="codebox" spellcheck="false" placeholder="code">`Hello, world!`</textarea>
+  <button id="run" type="button">Run ¿</button>
+  <pre id="output">out</pre>
+  <script type="module">
+    import { eval_what, default_var_dict } from "./whatlang_interpreter.js"
+
+    const $$$ = document.getElementById.bind(document)
+    const codeBox = $$$("codebox")
+    const runBtn = $$$("run")
+    const output = $$$("output")
+
+    runBtn.onclick = () => {
+      output.textContent = ""
+      let time = Date.now()
+      const h = setInterval(() => {
+        time = Date.now()
+      }, 1000)
+      eval_what(
+        /*code*/ codeBox.value,
+        /*fstack*/ [[]],
+        /*var_dict*/ default_var_dict,
+        /*output*/ t => output.textContent += t,
+        {
+          dead_loop_check() {
+            if (Date.now() - time > 5000) throw new Error("Execution time out")
+          }
+        }
+      ).catch(e => {
+        output.append(Object.assign(document.createElement("div"), {
+          style: "color: red",
+          textContent: e instanceof Error ? String(e) : `Exception: ${e}`
+        }))
+      }).finally(() => {
+        clearInterval(h)
+      })
+    }
+  </script>
+</body>
+</html>
