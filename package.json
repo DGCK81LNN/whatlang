@@ -1,9 +1,12 @@
 {
   "private": true,
   "name": "whatlang",
-  "packageManager": "yarn@4.2.2",
   "devDependencies": {
     "esbuild": "^0.24.0",
     "typescript": "^5.6.3"
+  },
+  "packageManager": "yarn@4.2.2",
+  "scripts": {
+    "build": "esbuild whatlang_interpreter.ts --format=esm --bundle --minify --sourcemap  --outfile=whatlang_interpreter.js"
   }
 }
