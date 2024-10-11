@@ -55,7 +55,7 @@
       eval_what(
         /*code*/ codeBox.value,
         /*fstack*/ [[]],
-        /*var_dict*/ default_var_dict,
+        /*var_dict*/ { ...default_var_dict },
         /*output*/ t => output.textContent += t,
         {
           dead_loop_check() {
