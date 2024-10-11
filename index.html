@@ -32,7 +32,10 @@
 </head>
 <body>
   <textarea id="codebox" spellcheck="false" placeholder="code">`Hello, world!`</textarea>
-  <button id="run" type="button">Run ¿</button>
+  <div>
+    <button id="run" type="button">Run ¿</button>
+    <small>(F5)</small>
+  </div>
   <pre id="output">out</pre>
   <script type="module">
     import { eval_what, default_var_dict } from "./whatlang_interpreter.js"
@@ -42,7 +45,7 @@
     const runBtn = $$$("run")
     const output = $$$("output")
 
-    runBtn.onclick = () => {
+    function run() {
       output.textContent = ""
       let time = Date.now()
       const h = setInterval(() => {
@@ -67,6 +70,16 @@
         clearInterval(h)
       })
     }
+    
+    runBtn.onclick = run
+
+    // F5 to run
+    document.addEventListener("keydown", ev => {
+      if (ev.key == "F5") {
+        ev.preventDefault()
+        run()
+      }
+    })
   </script>
 </body>
 </html>
