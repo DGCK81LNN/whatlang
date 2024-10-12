@@ -1,0 +1,34 @@
+:root {
+  background-color: white;
+  font-family: system-ui;
+}
+#codebox {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 18rem;
+  resize: vertical;
+}
+#run {
+  font: 14px system-ui;
+}
+#output {
+  display: block;
+  padding: 0.5rem;
+  background-color: lightgray;
+  white-space: pre-wrap;
+  overflow: auto;
+  word-break: break-all;
+}
+#codebox, #output {
+  font: 14px / 1.375 "Consolas", ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Mono", "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+}
+
+@media only screen and (prefers-color-scheme: dark) {
+  :root {
+    filter: invert(1) hue-rotate(180deg);
+  }
+  #codebox, #output {
+    font-weight: 600;
+  }
+}
