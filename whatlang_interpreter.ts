@@ -135,6 +135,8 @@ const repr_formatting : (x : any) => string = (x : any) => {
         return "inf@"
     } else if (x == -Infinity) {
         return "ninf@"
+    } else if (Object.is(x, -0)) {
+        return "(-0)num@"
     } else if (typeof x == "number") {
         if (
            x < 0 || x >= 1.0e+21 ||
@@ -165,7 +167,7 @@ export const exec_what = async (
         temp2 = [fstack, var_dict, output]
         temp2.splice(temp3)
         temp2 = (temp.length > temp3 ? stack.splice(temp3 - temp.length) : []).concat(temp2)
-        temp = await temp(...temp2)
+        temp = await temp(...new Array(temp.length - temp2.length), ...temp2)
         if (temp != undefined) stack.push(temp)
     } else {
         temp2 = temp in var_dict ? var_dict[temp] : temp
