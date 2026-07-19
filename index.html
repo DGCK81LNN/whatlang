@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
   <title>WhatLang interpreter</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <textarea id="codebox" spellcheck="false" placeholder="code">`Hello, world!`</textarea>
@@ -13,6 +13,13 @@
     <small>(F5)</small>
   </div>
   <pre id="output">out</pre>
+  <script type="importmap">
+    {
+      "imports": {
+        "whatlang-interpreter": "./whatlang_interpreter.js"
+      }
+    }
+  </script>
   <script type="module" src="script.js"></script>
 </body>
 </html>

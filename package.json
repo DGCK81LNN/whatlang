@@ -2,12 +2,21 @@
   "private": true,
   "name": "whatlang",
   "devDependencies": {
-    "esbuild": "^0.24.0",
-    "typescript": "^5.6.3",
-    "whatlang-interpreter": "^0.3.3"
+    "@babel/core": "^7.28.4",
+    "@babel/preset-env": "^7.28.3",
+    "@babel/preset-typescript": "^7.27.1",
+    "babel-loader": "^10.0.0",
+    "core-js": "3",
+    "esbuild": "^0.25.10",
+    "html-loader": "^5.0.0",
+    "typescript": "^5.9.3",
+    "webpack": "^5.102.1",
+    "whatlang-interpreter": "^0.4.1"
   },
   "packageManager": "yarn@4.7.0+sha512.5a0afa1d4c1d844b3447ee3319633797bcd6385d9a44be07993ae52ff4facabccafb4af5dcd1c2f9a94ac113e5e9ff56f6130431905884414229e284e37bb7c9",
   "scripts": {
-    "build": "esbuild node_modules/whatlang-interpreter/src/whatlang_interpreter.ts --format=esm --bundle --minify --sourcemap --outfile=whatlang_interpreter.js"
+    "build": "node ./scripts/build.mjs",
+    "build:esm": "node ./scripts/build.mjs --esm",
+    "build:es5": "node ./scripts/build.mjs --es5"
   }
 }
